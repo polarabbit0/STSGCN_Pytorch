@@ -61,12 +61,7 @@ parser.add_argument('--log_file', default=config['train']['log_file'], help='log
 
 args = parser.parse_args()
 
-# 指定多个GPU
-device_ids = [0, 1]  # 在这里选择两个GPU设备，可以根据需要更改
 
-# 将模型并行化到多个GPU上
-if torch.cuda.device_count() > 1:
-    model = nn.DataParallel(model, device_ids=device_ids)
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
